@@ -9,3 +9,7 @@ It would be interesting to see if the embedding for questions is close to the em
 
 [] Deal with unbalancing (weigthing or oversampling)
 [] 
+
+## The final result:
+- A chatbot?
+- 
