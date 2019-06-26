@@ -42,8 +42,8 @@ def main():
     output_data = []
     with open(args.input, "r") as original_file:
         original_data = json.load(original_file)["data"]
-        for current_document in original_data:
-            for current_paragraph in current_document["paragraphs"]:
+        for doc_number, current_document in enumerate(original_data):
+            for paragraph_id, current_paragraph in enumerate(current_document["paragraphs"]):
                 processed_context = tokenize_and_split_sentences(current_paragraph["context"])
                 for current_question in current_paragraph["qas"]:
                     question_text = current_question["question"]
@@ -52,7 +52,9 @@ def main():
                          current_question["answers"]])
                     for index, s in enumerate(processed_context["sentences"]):
                         example = {"question": question_text, "sentence": s,
-                                   "label": int(index in sentences_containing_answer)}
+                                   "label": int(index in sentences_containing_answer),
+                                   "paragraph_id": paragraph_id,
+                                   "doc_number": doc_number}
                         output_data.append(example)
                         if len(output_data) % 1000 == 0:
                             logging.info("Processed {} documents".format(len(output_data)))
