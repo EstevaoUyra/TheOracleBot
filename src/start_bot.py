@@ -1,7 +1,7 @@
 import telebot
 import sys
 sys.path.append('.')
-from gpt2.src.generate_from_string import continue_string
+from gpt.src.generate_from_string import continue_string
 from deeppavlov import build_model, configs
 import numpy as np
 
