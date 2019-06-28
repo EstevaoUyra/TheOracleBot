@@ -1,0 +1,8 @@
+nltk
+deeppavlov
+gensim
+pyTelegramBotAPI
+tensorflow-gpu
+regex==2017.4.5
+requests==2.21.0
+tqdm==4.31.1

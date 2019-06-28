@@ -1,4 +1,0 @@
-nltk
-deeppavlov
-gensim
-pyTelegramBotAPI
