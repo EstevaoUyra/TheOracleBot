@@ -1,5 +1,5 @@
 install:
-    pip install -r requirements.txt
+	pip install -r requirements.txt
 	python src/download_bert.py
 	python gpt/download_model.py 345M
 
