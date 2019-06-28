@@ -1,8 +1,8 @@
-nltk
-deeppavlov
-gensim
-pyTelegramBotAPI
-tensorflow-gpu
+pyTelegramBotAPI==3.5.1
+tensorflow-gpu==1.13.1
+deeppavlov==0.3.1
+nltk==3.2.5
+gensim==3.4.0
 regex==2017.4.5
 requests==2.21.0
 tqdm==4.31.1
