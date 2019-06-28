@@ -1,4 +1,7 @@
 import telebot
+import sys
+sys.path.append('.')
+from gpt2.src.generate_from_string import continue_string
 from deeppavlov import build_model, configs
 import numpy as np
 
@@ -59,7 +62,8 @@ def echo_all(message):
     print('\nQuestion:', message.text)
     print('\nAnswer:', ans[0][0])
     print('\nFull:', ans)
-    bot.reply_to(message, ans[0][0])
+    continuation = continue_string(message.text, length=100)
+    bot.reply_to(message, continuation)
 
 
 print('Start handling')

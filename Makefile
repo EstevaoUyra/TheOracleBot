@@ -1,2 +1,6 @@
-data-pipe:
-	python src/data_pipe.py
+install:
+	python src/download_bert.py
+	python gpt2/download_model.py 345M
+
+run:
+	python src/start_bot.py
