@@ -45,7 +45,7 @@ def answer_if_confident(question, context, strictness=1.0):
 
     return answers[0] if Eq > threshold else "Neither the tea leaves '+" \
                                              "nor GPT-2 have found an answer to your question... " \
-                                             "I hope you eventually find what you are searching for."
+                                             "I hope you eventually find out what you are searching for."
 
 
 def extracted_answers(questions, context):

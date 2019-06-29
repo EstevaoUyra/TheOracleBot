@@ -93,7 +93,7 @@ def get_future_prediction(name):
     default_time_marker = "And then "
 
     new_text = input_text
-    while len(new_text.split()) - len(input_text.split()) < 500:
+    while len(new_text.split()) - len(input_text.split()) < 400:
         new_text += continue_string(new_text, length=80)
         period_position = new_text.rfind('.')
         new_text = new_text[:period_position+1]
@@ -103,7 +103,7 @@ def get_future_prediction(name):
             time_index += 1
         else:
             new_text += default_time_marker
-    return new_text[len(tag_seed):]
+    return new_text[len(tag_seed):new_text.rfind('\n')]
 
 
 if __name__ == '__main__':
