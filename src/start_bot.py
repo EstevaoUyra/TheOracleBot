@@ -72,6 +72,9 @@ def echo_all(message):
     print('\nFull:', ans)
     # continuation = continue_string(message.text, length=100)
     bot.send_message(message.chat.id, 'Your future is:'+futures[message.chat.id])
+    answer = BERT([futures[message.chat.id]], [message.text])[0][0]
+    bot.send_message(answer)
+    bot.send_message(answer_if_confident(message.text, futures[message.chat.id]))
 
 
 print('Start handling')
