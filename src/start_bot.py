@@ -66,15 +66,16 @@ def echo_all(message):
 
 @bot.message_handler(func=lambda m: True)
 def echo_all(message):
-    ans = answer_about_friendship(message.text)
-    print('\nQuestion:', message.text)
-    print('\nAnswer:', ans[0][0])
-    print('\nFull:', ans)
-    # continuation = continue_string(message.text, length=100)
-    bot.send_message(message.chat.id, 'Your future is:'+futures[message.chat.id])
-    answer = BERT([futures[message.chat.id]], [message.text])[0][0]
-    bot.send_message(answer)
-    bot.send_message(answer_if_confident(message.text, futures[message.chat.id]))
+    if message.chat.id in futures:
+        ans = answer_about_friendship(message.text)
+        print('\nQuestion:', message.text)
+        print('\nAnswer:', ans[0][0])
+        print('\nFull:', ans)
+        # continuation = continue_string(message.text, length=100)
+        bot.send_message(message.chat.id, 'Your future is:'+futures[message.chat.id])
+        answer = BERT([futures[message.chat.id]], [message.text])[0][0]
+        bot.send_message(answer)
+        bot.send_message(answer_if_confident(message.text, futures[message.chat.id]))
 
 
 print('Start handling')
