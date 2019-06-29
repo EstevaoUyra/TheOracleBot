@@ -95,17 +95,17 @@ def get_future_prediction(name):
     new_text = input_text
     while len(new_text.split()) - len(input_text.split()) < 400:
         new_text += continue_string(new_text, length=80)
+        if '<|endoftext|>' in new_text:
+            new_text = new_text[:new_text.rfind('<|endoftext|>')]
+
         period_position = new_text.rfind('.')
-        new_text = new_text[:period_position+1]
+        new_text = new_text[:period_position + 1]
         new_text += "\n"
         if time_index < len(time_markers):
             new_text += time_markers[time_index]
             time_index += 1
         else:
             new_text += default_time_marker
-
-        if '<|endoftext|>' in new_text:
-            new_text = new_text[:new_text.rfind('<|endoftext|>')]
 
     return new_text[len(tag_seed):new_text.rfind('\n')]
 
