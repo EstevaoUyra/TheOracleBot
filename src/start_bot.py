@@ -1,7 +1,7 @@
 import telebot
 import sys
 sys.path.append('.')
-from gpt.src.generate_from_string import continue_string
+from gpt.src.generate_from_string import continue_string, get_future_prediction
 from deeppavlov import build_model, configs
 import numpy as np
 
@@ -11,6 +11,9 @@ BERT = build_model(configs.squad.squad, download=True)
 print('\n\n\n\n\n', 30*'---', '\nCreating bot')
 token = '864065501:AAHvoUqncSS8t-_x7E1lnP7EvWJd3IM3mpM'
 bot = telebot.TeleBot(token)
+
+
+futures = {}
 
 
 def answer_about_friendship(question):
@@ -46,9 +49,13 @@ def extracted_answers(questions, context):
     return {q: answer_if_confident(q, context) for q in questions}
 
 
-@bot.message_handler(commands=['start', 'help'])
+@bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.reply_to(message, "Howdy, how are you doing?")
+    bot.send_message(message.chat.id, "Hello {}, I was waiting for you. " +
+                                      "Be careful with the vase.".format(message.chat.first_name) +
+                                      " I am listening to your future. " +
+                                      "Wait for a bit and I will come back with something for you.")
+    futures[message.chat.id] = get_future_prediction()
 
 
 @bot.message_handler(regexp="test")
@@ -62,8 +69,8 @@ def echo_all(message):
     print('\nQuestion:', message.text)
     print('\nAnswer:', ans[0][0])
     print('\nFull:', ans)
-    continuation = continue_string(message.text, length=100)
-    bot.reply_to(message, continuation)
+    # continuation = continue_string(message.text, length=100)
+    bot.send_message(message.chat_id, 'Your future is:'+futures[message.chat_id])
 
 
 print('Start handling')

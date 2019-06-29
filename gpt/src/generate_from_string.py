@@ -8,12 +8,11 @@ import tensorflow as tf
 from . import model, sample, encoder
 
 
-def continue_string(raw_text,
+def continue_string(raw_text,length=None,
                     model_name='345M',  # 117M
                     seed=None,
                     nsamples=1,
                     batch_size=1,
-                    length=None,
                     temperature=1.,
                     top_k=5,
                     models_dir='data/models',
@@ -81,6 +80,27 @@ def continue_string(raw_text,
                 text = enc.decode(out[i])
                 gen_text.append(text)
     return gen_text
+
+
+def get_future_prediction():
+    tag_seed = "children life death money career 2021 2022 2030 by the age of 50 "
+    input_text = tag_seed + "In the year of 2049 I want to"
+    time_markers = ["Next month I will", "In autumn it will be", "By the end of winter I will", "Next year I have to"]
+    time_index = 0
+    default_time_marker = "And then "
+
+    new_text = input_text
+    while len(new_text) - len(input_text) < 500:
+        new_text += generate_text(new_text, length=40)
+        period_position = new_text.rfind('.')
+        new_text = new_text[:period_position+1]
+        new_text += "\n"
+        if time_index < len(time_markers):
+            new_text += time_markers[time_index]
+            time_index += 1
+        else:
+            new_text += default_time_marker
+    return new_text[len(tag_seed):]
 
 
 if __name__ == '__main__':
