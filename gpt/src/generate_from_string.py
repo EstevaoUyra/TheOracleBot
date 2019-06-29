@@ -8,7 +8,7 @@ import tensorflow as tf
 from . import model, sample, encoder
 
 
-def continue_string(raw_text,length=None,
+def continue_string(raw_text, length=None,
                     model_name='345M',  # 117M
                     seed=None,
                     nsamples=1,
@@ -91,7 +91,7 @@ def get_future_prediction():
 
     new_text = input_text
     while len(new_text) - len(input_text) < 500:
-        new_text += generate_text(new_text, length=40)
+        new_text += continue_string(new_text, length=40)
         period_position = new_text.rfind('.')
         new_text = new_text[:period_position+1]
         new_text += "\n"
