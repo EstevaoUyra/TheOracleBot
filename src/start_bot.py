@@ -43,7 +43,7 @@ def answer_if_confident(question, context, strictness=1.0):
 
     threshold = np.sqrt(Ek*Ea)*strictness
 
-    return answers[0] if Eq > threshold else "Neither the tea leaves '+" \
+    return answers[0] if Eq > threshold else "Neither the tea leaves " \
                                              "nor GPT-2 have found an answer to your question... " \
                                              "I hope you eventually find out what you are searching for."
 
@@ -72,7 +72,7 @@ def send_welcome(message):
 @bot.message_handler(regexp="Please show me my whole future.")
 def show_future(message):
     if message.chat.id in futures:
-        bot.send_message(message.chat.id, 'Behold your future:' + futures[message.chat.id])
+        bot.send_message(message.chat.id, 'Behold your future: ' + futures[message.chat.id])
 
 
 @bot.message_handler(regexp="test")
