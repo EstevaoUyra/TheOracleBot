@@ -84,7 +84,7 @@ def continue_string(raw_text, length=None,
 
 def get_future_prediction(name):
     tag_seed = "children life death money career family"
-    input_text = tag_seed + "In the year of 2049 {} will begin".format(name)
+    input_text = tag_seed + "In the year of {} {} will begin".format(np.random.randint(2020, 2070), name)
     time_markers = ["Next month {} will".format(name),
                     "In autumn it will be",
                     "By the end of winter {} will have".format(name)]
