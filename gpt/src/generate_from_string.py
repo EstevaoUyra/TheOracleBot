@@ -9,7 +9,7 @@ from . import model, sample, encoder
 
 
 def continue_string(raw_text,
-                    model_name='117M',  # 117M
+                    model_name='345M',  # 117M
                     seed=None,
                     nsamples=1,
                     batch_size=1,
