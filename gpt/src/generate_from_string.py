@@ -87,13 +87,14 @@ def get_future_prediction(name):
     input_text = tag_seed + "In the year of {} {} will begin".format(np.random.randint(2020, 2070), name)
     time_markers = ["Next month {} will".format(name),
                     "In autumn it will be",
-                    "By the end of winter {} will have".format(name)]
+                    "By the end of winter {} will have".format(name),
+                    "In the end, {} will die because of".format(name)]
     time_index = 0
     default_time_marker = "And then "
 
     new_text = input_text
     while len(new_text) - len(input_text) < 1000:
-        new_text += continue_string(new_text, length=100)
+        new_text += continue_string(new_text, length=80)
         period_position = new_text.rfind('.')
         new_text = new_text[:period_position+1]
         new_text += "\n"
