@@ -72,7 +72,7 @@ def send_welcome(message):
 @bot.message_handler(regexp="Please show me my whole future.")
 def show_future(message):
     if message.chat.id in futures:
-        bot.send_message(message.chat.id, 'Your future is:' + futures[message.chat.id])
+        bot.send_message(message.chat.id, 'Behold your future: ' + futures[message.chat.id])
 
 
 @bot.message_handler(regexp="test")

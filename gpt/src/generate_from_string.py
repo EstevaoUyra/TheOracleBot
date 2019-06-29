@@ -103,6 +103,10 @@ def get_future_prediction(name):
             time_index += 1
         else:
             new_text += default_time_marker
+
+        if '<|endoftext|>' in new_text:
+            new_text = new_text[:new_text.rfind('<|endoftext|>')]
+
     return new_text[len(tag_seed):new_text.rfind('\n')]
 
 
