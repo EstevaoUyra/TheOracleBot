@@ -1,4 +1,5 @@
 import telebot
+from telebot import types
 import sys
 sys.path.append('.')
 from gpt.src.generate_from_string import continue_string, get_future_prediction
@@ -56,7 +57,20 @@ def send_welcome(message):
                                       " I am listening to your future. " +
                                       "Wait for a bit and I will come back with something for you.")
     futures[message.chat.id] = get_future_prediction(message.chat.first_name)
-    bot.send_message(message.chat.id, 'You can ask me anything now.')
+
+    markup = types.ReplyKeyboardMarkup(row_width=1)
+    itembtn1 = types.KeyboardButton('Please show me my whole future.')
+    markup.add(itembtn1)
+
+    bot.send_message(message.chat.id, 'You can ask me anything now, '
+                     'or you can try to dive all by yourself in the messages from your future.',
+                     reply_markup=markup)
+
+
+@bot.message_handler(regexp="Please show me my whole future.")
+def show_future(message):
+    if message.chat.id in futures:
+        bot.send_message(message.chat.id, 'Your future is:' + futures[message.chat.id])
 
 
 @bot.message_handler(regexp="test")
@@ -67,10 +81,6 @@ def echo_all(message):
 @bot.message_handler(func=lambda m: True)
 def echo_all(message):
     if message.chat.id in futures:
-        # continuation = continue_string(message.text, length=100)
-        bot.send_message(message.chat.id, 'Your future is:'+futures[message.chat.id])
-        answer = BERT([futures[message.chat.id]], [message.text])[0][0]
-        bot.send_message(message.chat.id, answer)
         bot.send_message(message.chat.id, answer_if_confident(message.text, futures[message.chat.id]))
 
 
