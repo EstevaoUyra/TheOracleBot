@@ -82,16 +82,18 @@ def continue_string(raw_text, length=None,
     return gen_text[0]
 
 
-def get_future_prediction():
-    tag_seed = "children life death money career 2021 2022 2030 by the age of 50 "
-    input_text = tag_seed + "In the year of 2049 I want to"
-    time_markers = ["Next month I will", "In autumn it will be", "By the end of winter I will", "Next year I have to"]
+def get_future_prediction(name):
+    tag_seed = "children life death money career family"
+    input_text = tag_seed + "In the year of 2049 {} will begin".format(name)
+    time_markers = ["Next month {} will".format(name),
+                    "In autumn it will be",
+                    "By the end of winter {} will have".format(name)]
     time_index = 0
     default_time_marker = "And then "
 
     new_text = input_text
     while len(new_text) - len(input_text) < 1000:
-        new_text += continue_string(new_text, length=120)
+        new_text += continue_string(new_text, length=100)
         period_position = new_text.rfind('.')
         new_text = new_text[:period_position+1]
         new_text += "\n"
