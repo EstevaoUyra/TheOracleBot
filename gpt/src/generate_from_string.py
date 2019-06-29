@@ -14,7 +14,7 @@ def continue_string(raw_text, length=None,
                     nsamples=1,
                     batch_size=1,
                     temperature=1.,
-                    top_k=5,
+                    top_k=30,
                     models_dir='data/models',
                     ):
     """
@@ -90,8 +90,8 @@ def get_future_prediction():
     default_time_marker = "And then "
 
     new_text = input_text
-    while len(new_text) - len(input_text) < 500:
-        new_text += continue_string(new_text, length=40)
+    while len(new_text) - len(input_text) < 1000:
+        new_text += continue_string(new_text, length=120)
         period_position = new_text.rfind('.')
         new_text = new_text[:period_position+1]
         new_text += "\n"
