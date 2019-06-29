@@ -51,12 +51,12 @@ def extracted_answers(questions, context):
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.send_message(message.chat.id, "Hello {}, I was waiting for you. " +
-                                      "Be careful with the vase.".format(message.chat.first_name) +
+    bot.send_message(message.chat.id, "Hello {}, I was waiting for you. ".format(message.chat.first_name) +
+                                      "Be careful with the vase." +
                                       " I am listening to your future. " +
                                       "Wait for a bit and I will come back with something for you.")
     futures[message.chat.id] = get_future_prediction()
-
+    bot.send_message(message.chat.id, 'You can ask me anything now.')
 
 @bot.message_handler(regexp="test")
 def echo_all(message):

@@ -79,7 +79,7 @@ def continue_string(raw_text, length=None,
                 generated += 1
                 text = enc.decode(out[i])
                 gen_text.append(text)
-    return gen_text
+    return gen_text[0]
 
 
 def get_future_prediction():
