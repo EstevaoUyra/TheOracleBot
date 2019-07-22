@@ -1,3 +1,5 @@
 pyTelegramBotAPI
 tensorflow-gpu
 deeppavlov
+keras_applications==1.0.2
+keras_preprocessing==1.0.1

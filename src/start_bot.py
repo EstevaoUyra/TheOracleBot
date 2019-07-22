@@ -21,9 +21,12 @@ def answer_about_friendship(question):
     FRIEND = """Friendship is a relationship of mutual affection between people.
      Friendship is a stronger form of interpersonal bond than an association. 
      Friendship has been studied in academic fields such as communication, sociology, social psychology, anthropology, and philosophy. 
-     arious academic theories of friendship have been proposed, including social exchange theory, equity theory, relational dialectics, and attachment styles.
+     various academic theories of friendship have been proposed, including social exchange theory, equity theory, relational dialectics, and attachment styles.
     Although there are many forms of friendship, some of which may vary from place to place, certain characteristics are present in many types of such bonds. 
-    Such characteristics include affection; kindness, love, virtue, sympathy, empathy, honesty, altruism, loyalty, generosity, forgiveness, mutual understanding and compassion, enjoyment of each other's company, trust, and the ability to be oneself, express one's feelings to others, and make mistakes without fear of judgment from the friend. Friendship is an essential aspect of relationship building skills.
+    Such characteristics include affection; kindness, love, virtue, sympathy, empathy, honesty, altruism, loyalty, 
+    generosity, forgiveness, mutual understanding and compassion, enjoyment of each other's company, trust, 
+    and the ability to be oneself, express one's feelings to others, and make mistakes without fear of judgment 
+    from the friend. Friendship is an essential aspect of relationship building skills.
     """
     return BERT([FRIEND], [question])
 
