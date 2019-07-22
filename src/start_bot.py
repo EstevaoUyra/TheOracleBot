@@ -10,7 +10,7 @@ print('\n\nLoading model')
 BERT = build_model(configs.squad.squad, download=True)
 
 print('\n\n\n\n\n', 30*'---', '\nCreating bot')
-token = 'TelegramTokenMANYlettersANDnum34rsXXXXXXX'
+token = open('telegram_token', 'r').read()
 bot = telebot.TeleBot(token)
 
 
