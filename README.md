@@ -1,3 +1,3 @@
 # CISS_Project
 
-[sketch](sketch_final_model.jpg)
+![sketch](model_sketch.png)
