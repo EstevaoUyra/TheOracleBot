@@ -1,5 +1,6 @@
 pyTelegramBotAPI
 tensorflow-gpu
 deeppavlov
+regex
 keras_applications==1.0.2
 keras_preprocessing==1.0.1
