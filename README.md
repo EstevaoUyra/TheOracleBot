@@ -1,3 +1,7 @@
+# Authors
+
+[Beatriz Albiero](https://github.com/beatrizalbiero), Estevao Uyra, [Manuel Ciosici](https://github.com/manuelciosici)
+
 # The Oracle Bot
 
 This project was created during the 2nd Computational Intelligence Summer School on deep learning and dialog systems. The school took place in Lowell, organized by the Text Machine Lab of UMass Lowell and Neural Networks and Deep Learning Lab at MIPT (iPavlov project), Moscow.
